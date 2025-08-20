@@ -28,7 +28,7 @@ app.get("/health", (_req, res) => res.json({ ok: true }));
 app.use("/api/auth", authRouter);
 app.use("/api/rooms", roomsRouter);
 app.use("/api/messages", messagesRouter);
-app.use("/api/user", profileRouter);
+// app.use("/api/user", profileRouter);
 
 app.get("/", (_req, res) => {
   res.json({message: "Welcome to the Realtime Chat API", version: "1.0.0"}).status(200);
