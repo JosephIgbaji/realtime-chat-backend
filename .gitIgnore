@@ -1,0 +1,36 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+out/
+
+# Coverage
+coverage/
+*.lcov
+
+# IDE and editor settings
+.vscode/
+.idea/
+.DS_Store
+
+# Optional caches
+.npm/
+.eslintcache
+.stylelintcache
+.yarn-integrity

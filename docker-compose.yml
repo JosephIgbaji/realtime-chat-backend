@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: realtime_chat
+      MYSQL_USER: chatuser
+      MYSQL_PASSWORD: chatpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PORT: 4000
+      NODE_ENV: development
+      JWT_SECRET: voyatek-realtime-chatapp
+      JWT_EXPIRES_IN: 7d
+      DATABASE_URL: "mysql://chatuser:chatpass@db:3306/realtime_chat"
+      CORS_ORIGIN: "http://localhost:5173"
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npx prisma migrate deploy && npm start"
+
+volumes:
+  db_data:
